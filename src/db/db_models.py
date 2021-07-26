@@ -13,7 +13,7 @@ class usuarios(db.Model):
     apellido_usuario = Column(String(30), nullable=False)
     cedula_usuario = Column(String(30), nullable=False, unique=True)
     rol_usuario = Column(String(20), nullable=False)
-    logsUsuarios = relationship("logs_usuarios", back_populates="usuarios")
+    logs_usuarios = relationship("logs_usuarios", back_populates="usuarios")
 
     def __init__(self, nombre_usuario, apellido_usuario, cedula_usuario, rol_usuario):
         self.nombre_usuario = nombre_usuario
