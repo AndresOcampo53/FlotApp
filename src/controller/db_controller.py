@@ -12,8 +12,9 @@ def crear_usuario_controller():
     # mandamos a un metodo helper el rquest completo
     json_data = request.json
     response_crear_usuario = crear_usuario(json_data)
-    if response_crear_usuario["mensaje"] == "se pudo crear el usuario y hacer un commit()":
+    if response_crear_usuario["mensaje"] == "OK":
         response = Response(response=response_crear_usuario["mensaje"], status=200)
     else:
         response = Response(response=response_crear_usuario["mensaje"], status=500)
     return response
+
