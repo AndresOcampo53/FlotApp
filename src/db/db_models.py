@@ -1,23 +1,19 @@
-import enum
-import uuid
-
-from db import Base
-from sqlalchemy.orm import relationship, backref
-from sqlalchemy import Boolean, DateTime, Column, Integer, \
-    String, ForeignKey, JSON, Float, TypeDecorator
-
+from src.app import db
+from sqlalchemy.orm import relationship
+from sqlalchemy import DateTime, Column, Integer, \
+    String, ForeignKey, JSON, Float
 
 """------Definicion de tablas------"""
 
 
-class usuarios(Base):
+class usuarios(db.Model):
     __tablename__ = 'usuarios'
     id = Column(Integer(), primary_key=True)
     nombre_usuario = Column(String(30), nullable=False)
     apellido_usuario = Column(String(30), nullable=False)
     cedula_usuario = Column(String(30), nullable=False, unique=True)
     rol_usuario = Column(String(20), nullable=False)
-    logsUsuarios = relationship("logs_usuarios", back_populates="usuarios")
+    logs_usuarios = relationship("logs_usuarios", back_populates="usuarios")
 
     def __init__(self, nombre_usuario, apellido_usuario, cedula_usuario, rol_usuario):
         self.nombre_usuario = nombre_usuario
@@ -26,7 +22,7 @@ class usuarios(Base):
         self.rol_usuario = rol_usuario
 
 
-class logs_usuarios(Base):
+class logs_usuarios(db.Model):
     __tablename__ = 'logs_usuarios'
     id = Column(Integer(), primary_key=True)
     fecha_login = Column(DateTime, nullable=False)
@@ -38,7 +34,7 @@ class logs_usuarios(Base):
         self.usuarios_id = usuarios_id
 
 
-class centro_de_operaciones(Base):
+class centro_de_operaciones(db.Model):
     __tablename__ = 'centro_de_operaciones'
     id = Column(Integer(), primary_key=True)
     nombre_centro_de_operaciones = Column(String(50), nullable=False)
@@ -51,7 +47,7 @@ class centro_de_operaciones(Base):
         self.division_id = division_id
 
 
-class division(Base):
+class division(db.Model):
     __tablename__ = 'division'
     id = Column(Integer(), primary_key=True)
     nombre_division = Column(String(50), nullable=False)
@@ -61,7 +57,7 @@ class division(Base):
         self.nombre_division = nombre_division
 
 
-class vehiculo(Base):
+class vehiculo(db.Model):
     __tablename__ = 'vehiculo'
     id = Column(Integer, primary_key=True)
     placa = Column(String(10), nullable=False, unique=True)
@@ -80,7 +76,7 @@ class vehiculo(Base):
         self.centro_de_operaciones_id = centro_de_operaciones_id
 
 
-class formato_preoperacional(Base):
+class formato_preoperacional(db.Model):
     __tablename__ = 'formato_preoperacional'
     id = Column(Integer, primary_key=True)
     fecha = Column(DateTime, nullable=False)
@@ -94,7 +90,7 @@ class formato_preoperacional(Base):
         self.vehiculo_id = vehiculo_id
 
 
-class llantas(Base):
+class llantas(db.Model):
     __tablename__ = 'llantas'
     id = Column(Integer, primary_key=True)
     vehiculo_id = Column(Integer, ForeignKey("vehiculo.id"))
@@ -120,7 +116,7 @@ class llantas(Base):
         self.motivo_descarte = motivo_descarte
 
 
-class tanqueada(Base):
+class tanqueada(db.Model):
     __tablename__ = 'tanqueada'
     id = Column(Integer, primary_key=True)
     vehiculo_id = Column(Integer, ForeignKey("vehiculo.id"))
