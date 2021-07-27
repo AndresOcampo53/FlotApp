@@ -24,4 +24,14 @@ class usuarios_schema(SQLAlchemySchema):
     logs_usuarios = fields.Nested(logs_usuario_schema)
 
 
+class division_schema(SQLAlchemySchema):
+    class Meta:
+        model = division
+
+    id = auto_field()
+    nombre_division = auto_field()
+    centro_de_operaciones = fields.Nested(division)
+
+
+
 
