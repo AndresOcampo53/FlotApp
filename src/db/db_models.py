@@ -61,7 +61,7 @@ class vehiculo(db.Model):
     __tablename__ = 'vehiculo'
     id = Column(Integer, primary_key=True)
     placa = Column(String(10), nullable=False, unique=True)
-    modelo = Column(DateTime, nullable=False)
+    modelo = Column(String(10), nullable=False)
     capacidad = Column(Float, nullable=False)
     centro_de_operaciones_id = Column(Integer, ForeignKey("centro_de_operaciones.id"))
     centro_de_operaciones = relationship("centro_de_operaciones", back_populates="vehiculo")
@@ -111,6 +111,7 @@ class llantas(db.Model):
         self.posicion = posicion
         self.profundidad = profundidad
         self.kilometraje_instalacion = kilometraje_instalacion
+        self.fecha_instalacion = fecha_instalacion
         self.kilometraje_descarte = kilometraje_descarte
         self.fecha_descarte = fecha_descarte
         self.motivo_descarte = motivo_descarte
