@@ -17,13 +17,8 @@ def crear_usuario(request_data):
         new_usuario = usuarios(nombre_usuario, apellido_usuario, cedula_usuario, rol_usuario)
         db.session.add(new_usuario)
         db.session.commit()
-        mensaje = {"mensaje": "OK"}
+        mensaje = {"mensaje": "se pudo crear el usuario y hacer un commit()"}
         return mensaje
     except Exception as e:
-        mensaje = {"mensaje": "no se pudo hacer comit por estas razones: " + str(e)}
+        mensaje = {"mensaje": "no se pudo hacer comito por:" + str(e)}
         return mensaje
-
-
-def crear_centro_operaciones(request_data):
-    #aca voy a hacer cosillas
-    pass
