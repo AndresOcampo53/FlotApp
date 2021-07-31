@@ -10,8 +10,6 @@ class logs_usuario_schema(SQLAlchemySchema):
     fecha_login = auto_field()
     usuarios_id = auto_field()
 
-
-
 class usuarios_schema(SQLAlchemySchema):
     class Meta:
         model = usuarios
@@ -22,8 +20,6 @@ class usuarios_schema(SQLAlchemySchema):
     cedula_usuario = auto_field()
     rol_usuario = auto_field()
     logs_usuarios = fields.Nested(logs_usuario_schema)
-
-
 
 class division_schema(SQLAlchemySchema):
     class Meta:
@@ -69,7 +65,7 @@ class formato_preoperacional_schema(SQLAlchemySchema):
 
 class llantas_schema(SQLAlchemySchema):
     class Meta:
-        model = formato_preoperacional
+        model = llantas
 
     id = auto_field()
     vehiculo_id = auto_field()
@@ -85,7 +81,7 @@ class llantas_schema(SQLAlchemySchema):
 
 class tanqueada_schema(SQLAlchemySchema):
     class Meta:
-        model = formato_preoperacional
+        model = tanqueada
 
     id = auto_field()
     vehiculo_id = auto_field()

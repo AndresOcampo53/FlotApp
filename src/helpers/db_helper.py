@@ -1,9 +1,11 @@
 import bdb
 
+from flask import jsonify
 from flask_sqlalchemy import *
 from sqlalchemy import *
 from src.db.db_models import *
 from src.app import db
+from src.db_schemas.schemas import *
 
 
 def crear_usuario(request_data):
@@ -29,7 +31,7 @@ def crear_log_usuario(request_data):
     usuarios_id = request_data["usuarios_id"]
 
     try:
-        new_log_usuario = log_usuarios(fecha_login,usuarios_id)
+        new_log_usuario = logs_usuarios(fecha_login,usuarios_id)
         db.session.add(new_log_usuario)
         db.session.commit()
         mensaje = {"mensaje": "OK"}
@@ -142,3 +144,41 @@ def crear_tanqueada(request_data):
     except Exception as e:
         mensaje = {"mensaje": "no se pudo hacer comit por estas razones: " + str(e)}
         return mensaje
+
+
+def consultar_usuario(cedula):
+    #hacemos las consultas
+    try:
+        query = db.session.query(usuarios).filter(usuarios.cedula_usuario == cedula).first()
+        nombre = query.nombre_usuario
+        apellido = query.apellido_usuario
+        resultado = {"nombre":nombre,
+                     "apellido":apellido}
+
+        #result = usuarios_schema().dump(resultado)
+        resultado = jsonify(resultado)
+    except Exception as e:
+        mensaje = {"mensaje":"se produjo el siguiente error: "+str(e)}
+        resultado = mensaje,500
+    return  resultado
+
+
+def consultar_un_vehiculo(placa_a_buscar):
+    #def __init__(self, placa, modelo, capacidad, centro_de_operaciones_id):
+    try:
+        query = db.session.query(vehiculo).filter(vehiculo.placa == placa_a_buscar).first()
+        placa = query.placa
+        modelo = query.modelo
+        capacidad = query.capacidad
+        centro_de_operaciones_id = query.centro_de_operaciones_id
+        query_centro_operaciones = db.session.query(centro_de_operaciones).filter(centro_de_operaciones.id ==centro_de_operaciones_id).first()
+        resultado = {"placa": placa,
+                     "modelo": modelo,
+                     "capacidad":capacidad,
+                     "centro de operaciones":query_centro_operaciones.nombre_centro_de_operaciones}
+
+        resultado = jsonify(resultado)
+    except Exception as e:
+        mensaje = {"mensaje":"se produjo el siguiente error: "+str(e)}
+        resultado = mensaje, 500
+    return resultado

@@ -4,13 +4,15 @@ from flask_marshmallow import Marshmallow
 
 from src.app import app
 from src.helpers import db_helper
-from src.helpers.db_helper import crear_usuario
+from src.helpers.db_helper import crear_usuario, consultar_un_vehiculo
 from src.helpers.db_helper import crear_division
 from src.helpers.db_helper import crear_centro_de_operaciones
 from src.helpers.db_helper import crear_vehiculo
 from src.helpers.db_helper import crear_formato_preoperacional
 from src.helpers.db_helper import crear_llantas
 from src.helpers.db_helper import crear_tanqueada
+from src.helpers.db_helper import consultar_usuario
+
 
 @app.route('/crear_usuario', methods=['POST'])
 def crear_usuario_controller():
@@ -23,6 +25,7 @@ def crear_usuario_controller():
         response = Response(response=response_crear_usuario["mensaje"], status=500)
     return response
 
+
 @app.route('/crear_log_usuario', methods=['POST'])
 def crear_log_usuario():
     # mandamos a un metodo helper el request completo
@@ -33,6 +36,7 @@ def crear_log_usuario():
     else:
         response = Response(response=response_crear_log_usuario["mensaje"], status=500)
     return response
+
 
 @app.route('/crear_division', methods=['POST'])
 def crear_division_controller():
@@ -45,6 +49,7 @@ def crear_division_controller():
         response = Response(response=response_crear_division["mensaje"], status=500)
     return response
 
+
 @app.route('/crear_centro_de_operaciones', methods=['POST'])
 def crear_centro_de_operaciones_controller():
     # mandamos a un metodo helper el request completo
@@ -55,6 +60,7 @@ def crear_centro_de_operaciones_controller():
     else:
         response = Response(response=response_crear_centro_de_operaciones["mensaje"], status=500)
     return response
+
 
 @app.route('/crear_vehiculo', methods=['POST'])
 def crear_vehiculo_controller():
@@ -67,6 +73,7 @@ def crear_vehiculo_controller():
         response = Response(response=response_crear_vehiculo["mensaje"], status=500)
     return response
 
+
 @app.route('/crear_formato_preoperacional', methods=['POST'])
 def crear_formato_preoperacional_controller():
     # mandamos a un metodo helper el request completo
@@ -77,6 +84,7 @@ def crear_formato_preoperacional_controller():
     else:
         response = Response(response=response_formato_preoperacional["mensaje"], status=500)
     return response
+
 
 @app.route('/crear_llantas', methods=['POST'])
 def crear_llantas_controller():
@@ -89,6 +97,7 @@ def crear_llantas_controller():
         response = Response(response=response_crear_llantas["mensaje"], status=500)
     return response
 
+
 @app.route('/crear_tanqueada', methods=['POST'])
 def crear_tanqueada_controller():
     # mandamos a un metodo helper el request completo
@@ -99,3 +108,16 @@ def crear_tanqueada_controller():
     else:
         response = Response(response=response_crear_tanqueada["mensaje"], status=500)
     return response
+
+
+@app.route('/consultar_usuario/<cedula>', methods=['GET'])
+def consultar_usuario_controller(cedula):
+    response_consultar_usuario = consultar_usuario(cedula)
+    return response_consultar_usuario
+
+
+
+@app.route('/consultar_vehiculo/<placa>', methods=['GET'])
+def consultar_vehiculo_controller(placa):
+    response_consultar_usuario = consultar_un_vehiculo(placa)
+    return response_consultar_usuario
