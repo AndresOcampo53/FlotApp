@@ -1,0 +1,44 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Sign In</mat-card-title>
+      </mat-card-header>
+  
+      <form (ngSubmit)="onSubmit(formRegister)"
+        class="example-form"
+        #formRegister="ngForm">
+
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email"
+            type="email"
+            name="Email"
+            required
+            email
+            [(ngModel)]="usuario.email"
+            [formControl]="EmailControl">
+            <mat-error *ngIf="!formRegister.submitted && EmailControl.invalid">Formato no valido</mat-error>                          
+            <mat-error *ngIf="formRegister.submitted && EmailControl.invalid" >El email es obligatorio</mat-error>             
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width" >
+            <input matInput placeholder="Password" 
+            name="Password" 
+            type="password"
+            minlength="6"
+            required            
+            [(ngModel)]="usuario.password"
+            [formControl]="PasswordControl">
+            <mat-error *ngIf="!formRegister.submitted && PasswordControl.invalid">Formato no valido, minimo 6 caracteres</mat-error>                          
+            <mat-error *ngIf="formRegister.submitted && PasswordControl.invalid" >La contraseña es obligatoria</mat-error>            
+          </mat-form-field>   
+        </mat-card-content>
+        <a routerLink="/register" class="txt1">
+          ¿No tienes cuenta? / Registrate
+      </a>
+        <button mat-stroked-button color="accent" class="btn-block">Sign-in</button>
+      </form>
+    </mat-card>
+  
+  </div>
