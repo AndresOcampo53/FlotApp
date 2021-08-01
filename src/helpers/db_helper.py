@@ -40,7 +40,6 @@ def crear_log_usuario(request_data):
         mensaje = {"mensaje": "no se pudo hacer comit por estas razones: " + str(e)}
         return mensaje
 
-
 def crear_division(request_data):
     # instanciamos variables con los datos que vienen en el request desde el controller
     nombre_division = request_data["nombre_division"]
@@ -145,7 +144,6 @@ def crear_tanqueada(request_data):
         mensaje = {"mensaje": "no se pudo hacer comit por estas razones: " + str(e)}
         return mensaje
 
-
 def consultar_usuario(cedula):
     #hacemos las consultas
     try:
@@ -161,7 +159,6 @@ def consultar_usuario(cedula):
         mensaje = {"mensaje":"se produjo el siguiente error: "+str(e)}
         resultado = mensaje,500
     return  resultado
-
 
 def consultar_un_vehiculo(placa_a_buscar):
     #def __init__(self, placa, modelo, capacidad, centro_de_operaciones_id):
