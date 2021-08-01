@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="card mt-5 md-6" >
+        <div class="card-header">
+            Detalles Empleado
+        </div>
+        <div class="card-body md-6">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    Nombre: <h5>Pedro Perez</h5>
+                </li>
+                <li class="list-group-item">
+                    Clase: <h5>Conductor</h5>
+                </li>
+                <li class="list-group-item">
+                    Fecha Nacimiento: <h5>08-09-1960</h5>
+                </li>
+                <li class="list-group-item">
+                    Cedula: <h5>10.987.654</h5>
+                </li>
+            </ul>
+        </div>
+
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-warning m-1 btn-sm" (click)="onGoToEdit()">Editar</button>
+            <button class="btn btn-outline-danger m-1 btn-sm" (click)="onDelete()">Borrar</button>
+        </div>
+    </div>
+    <button class="btn btn-outline-warning m-2 ml-2" (click)="onGoToBackList()">Volver a la lista</button>
+</div>

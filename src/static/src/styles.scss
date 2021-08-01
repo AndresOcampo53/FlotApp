@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootswatch/dist/yeti/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/yeti/bootswatch";
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	min-height: 100vh;
+	background-color: #e5e5e5;
+	font-family: 'Roboto', sans-serif;
+}
+
+
+
