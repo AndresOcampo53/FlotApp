@@ -17,6 +17,10 @@ const routes: Routes = [
   { path: 'edit', loadChildren: () => import('./pages/vehicle/edit/edit.module').then(m => m.EditModule) },
   { path: 'details', loadChildren: () => import('./pages/vehicle/details/details.module').then(m => m.DetailsModule) },
   { path: 'list', loadChildren: () => import('./pages/vehicle/list/list.module').then(m => m.ListModule) },
+  { path: 'newV', loadChildren: () => import('./pages/usuario/new/new.module').then(m => m.NewModule) },
+  { path: 'listV', loadChildren: () => import('./pages/usuario/list/list.module').then(m => m.ListModule) },
+  { path: 'editV', loadChildren: () => import('./pages/usuario/edit/edit.module').then(m => m.EditModule) },
+  { path: 'detailsV', loadChildren: () => import('./pages/usuario/details/details.module').then(m => m.DetailsModule) },
   { path: '**',   redirectTo: 'login' }
 ];
 

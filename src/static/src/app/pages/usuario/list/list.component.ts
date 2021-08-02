@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras,Router } from '@angular/router';
-import { Employee, EmployeeService } from 'src/app/services/employee.service';
+import { NavigationExtras, Router } from '@angular/router';
+import { Vehicle, VehicleService } from 'src/app/services/vehicle.service';
 
 @Component({
   selector: 'app-list',
@@ -15,30 +15,26 @@ export class ListComponent implements OnInit {
     }
   }
 
-  employee: Employee[] = [];  
+  vehicle: Vehicle[] = [];  
 
-  constructor(private router: Router, private _employeeService: EmployeeService) {    
+  constructor(private router: Router, private _vehicleService: VehicleService) {    
    }  
 
   ngOnInit() {
-    this.employee = this._employeeService.geEmployee();        
+    this.vehicle = this._vehicleService.geVehicle();    
   }
   
   onGoToEdit(item: any): void {
     //this.navigationExtras.state.value = item;
-    this.router.navigate(['/edit', item]);
+    this.router.navigate(['/editV', this.navigationExtras]);
   }
 
   onGoToDetails(item: any): void {    
     //this.navigationExtras.state.value = item;
-    this.router.navigate(['details', item]);
+    this.router.navigate(['detailsV', this.navigationExtras]);
   }
 
   onGoToDelete(item: any): void { 
     
   }
-
-  
-
- 
 }

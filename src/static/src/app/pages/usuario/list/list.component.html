@@ -1,0 +1,29 @@
+<div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr class="table-info">
+          <th scope="col">Placa</th>
+          <th scope="col">Modelo</th>
+          <th scope="col">Capacidad Nacimiento</th>
+          <th scope="col">Kilometraje</th>
+          <th scope="col">Centro Operaciones</th>
+          <th class="d-none d-sm-block" scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-secondary" *ngFor="let item of vehicle">
+          <td>{{ item.placa}}</td>
+          <td>{{item.modelo}}</td>
+          <td>{{item.capacidad}}</td>
+          <td>{{item.kilometraje}}</td>
+          <td>{{item.centro_operaciones_id}}</td>
+          <td class="bnt-group d-none d-sm-block" role="group">
+            <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToEdit(item)">Editar</button>
+            <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToDetails(item)">Ver</button>
+            <button type="button" class="btn btn-outline-danger m-1" (click)="onGoToDelete(item)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
