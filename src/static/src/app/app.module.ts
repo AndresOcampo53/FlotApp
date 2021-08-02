@@ -21,6 +21,7 @@ import { MatListModule } from '@angular/material/list';
 import { PerfilComponent } from './components/user/perfil/perfil.component';
 import { MatTableModule } from '@angular/material/table';
 import { EmployeeService } from './services/employee.service';
+import { VehicleService } from './services/vehicle.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { EmployeeService } from './services/employee.service';
     
   ],
   providers: [
-    EmployeeService
+    EmployeeService,
+    VehicleService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

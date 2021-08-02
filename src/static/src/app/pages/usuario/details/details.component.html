@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="card mt-5 md-6" >
+        <div class="card-header">
+            Detalles Vehiculo
+        </div>
+        <div class="card-body md-6">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    Placa: <h5>STQ125</h5>
+                </li>
+                <li class="list-group-item">
+                    Modelo: <h5>KODIAK 1998</h5>
+                </li>
+                <li class="list-group-item">
+                    Capacidad: <h5>20</h5>
+                </li>
+                <li class="list-group-item">
+                    kilometraje: <h5>81.562</h5>
+                </li>
+                <li class="list-group-item">
+                    Centro Operaciones: <h5>Manizales</h5>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-warning m-1 btn-sm" (click)="onGoToEdit()">Editar</button>
+            <button class="btn btn-outline-danger m-1 btn-sm" (click)="onDelete()">Borrar</button>
+        </div>
+    </div>
+    <button class="btn btn-outline-warning m-2 ml-2" (click)="onGoToBackList()">Volver a la lista</button>
+</div>

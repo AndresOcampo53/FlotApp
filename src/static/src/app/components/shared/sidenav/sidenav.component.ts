@@ -44,11 +44,17 @@ export class SidenavComponent {
   }
 
   RedirectHome(){
-    this.router.navigate( ['/list'] )
-  }
-
-  RedirectUser(){
     this.router.navigate( ['/user'] )
   }
 
+  RedirectUser(){
+    this.router.navigate( ['/list'] )
+  }
+
+  RedirectVehicle(){
+    this.router.navigate( ['/listV'] )
+  }
+
+
+  
 }
